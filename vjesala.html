@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style_vjesala.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet"> 
+    <title>Vjesala</title>
+</head>
+<body>
+    <div class="dugmeMuzika">
+        <audio id="audiotag1" src="zvuk/Solutions_That_Work_-_David_Fesliyan.mp3" preload="auto" loop></audio>
+    </div>
+
+    <audio id="pogodjenoSlovo" src="zvuk/Ting-Popup.wav"></audio>
+
+    <label>Ime igraca:</label>
+    <p id="imeIgraca"></p>
+
+<div id="pocetnaStrana">
+    <div id="skloniInput">
+        <input type="text" placeholder="Unesite ime" id="unesiIme">
+         <button onclick="podesiIme();">OK</button>
+    </div>
+
+    <h1 class="nazivIgre">Vješala</h1>
+    <div>
+        <button class="dugmeKlik" onclick="zapocniIgru();">
+            Zapocni igru
+        </button>
+    </div>
+    <div><button onclick="prikaziPravila()" class="dugmeKlik">Pravila igre</button><br>    
+        <div class="pravila" id="pravila">
+            <div class="pravilaProzor">
+            <button class="zatvoriProzor" onclick="zatvoriProzor()">X</button>
+            <h1>PRAVILA IGRE!</h1>
+            <p>Otkrijte skrivenu riječ!</p>
+            <p>Obratite pažnju na dozvoljen broj pokušaja. Za svaku grešku dodaje se još jedan dio čovječuljka na vješala. Ako ne pogodite riječ, biće obješen, a to ne želite!<br>
+            Ukoliko pogodite sva slova koja čine skrivenu riječ, pobjeda je vaša! 
+            Dobru zabavu vam želimo! :)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="glavnaStrana">
+        <div>
+            <img src="https://i.postimg.cc/bNv1NG1Y/hangman.png"  name="vjesala" class="img" alt="pocetna slika" id="slike">
+        </div>
+
+        <div id="rijecWrapper"></div>
+
+        <div id="velikiDiv" class="centar"></div>
+        <div class="tastatura" id="dugmici">
+            <button onclick="klikDugme('a')" id='a' class="abcSlovo">A</button>
+            <button onclick="klikDugme('b')" id='b' class="abcSlovo">B</button>
+            <button onclick="klikDugme('c')" id='c' class="abcSlovo">C</button>
+            <button onclick="klikDugme('č')" id='č' class="abcSlovo">Č</button>
+            <button onclick="klikDugme('ć')" id='ć' class="abcSlovo">Ć</button>
+            <button onclick="klikDugme('d')" id='d' class="abcSlovo">D</button>
+            <button onclick="klikDugme('\u01c6')" id='&#454;' class="abcSlovo">Dž</button>
+            <button onclick="klikDugme('đ')" id='đ' class="abcSlovo">Đ</button>
+            <button onclick="klikDugme('e')" id='e' class="abcSlovo">E</button>
+            <button onclick="klikDugme('f')" id='f' class="abcSlovo">F</button>
+            <button onclick="klikDugme('g')" id='g' class="abcSlovo">G</button>
+            <button onclick="klikDugme('h')" id='h' class="abcSlovo">H</button>
+            <button onclick="klikDugme('i')" id='i' class="abcSlovo">I</button>
+            <button onclick="klikDugme('j')" id='j' class="abcSlovo">J</button>
+            <button onclick="klikDugme('k')" id='k' class="abcSlovo">K</button>
+            <button onclick="klikDugme('l')" id='l' class="abcSlovo">L</button>
+            <button onclick="klikDugme('\u01c9')" id='&#457;' class="abcSlovo">Lj</button>
+            <button onclick="klikDugme('m')" id='m' class="abcSlovo">M</button>
+            <button onclick="klikDugme('n')" id='n' class="abcSlovo">N</button>
+            <button onclick="klikDugme('\u01cc')" id='&#460;' class="abcSlovo">Nj</button>
+            <button onclick="klikDugme('o')" id='o' class="abcSlovo">O</button>
+            <button onclick="klikDugme('p')" id='p' class="abcSlovo">P</button>
+            <button onclick="klikDugme('r')" id='r' class="abcSlovo">R</button>
+            <button onclick="klikDugme('s')" id='s' class="abcSlovo">S</button>
+            <button onclick="klikDugme('š')" id='š' class="abcSlovo">Š</button>        
+            <button onclick="klikDugme('t')" id='t' class="abcSlovo">T</button>
+            <button onclick="klikDugme('u')" id='u' class="abcSlovo">U</button>
+            <button onclick="klikDugme('v')" id='v' class="abcSlovo">V</button>
+            <button onclick="klikDugme('z')" id='z' class="abcSlovo">Z</button>
+            <button onclick="klikDugme('ž')" id='ž' class="abcSlovo">Ž</button>
+        </div>
+
+        <div>
+            <button onclick="napustiIgru();" id="napustiIgru" class="dugmeKlik">NAPUSTI IGRU</button>
+        </div>
+
+        <div id="pobjeda" class="popUpProzor">
+            <div class="popUpTekst">
+                <h1>Bravo, pobijedio si!</h1><br><br>
+                <button class="dugmeKlik" onclick="zapocniIgru();">Nastavi Igru</button><br>
+                <button onclick="napustiIgru();" id="krajIgre" class="dugmeKlik">Zavrsi Igru</button>
+            </div>
+        </div>
+
+        <div id="poraz" class="popUpProzor">
+            <div class="popUpTekst">
+            <h1>Poraz!</h1>
+            <button onclick="zapocniIgru();" class="dugmeKlik">Pokusaj ponovo</button>
+            <button onclick="napustiIgru();" id="krajIgre" class="dugmeKlik">Zavrsi igru</button>
+        </div>
+    </div>
+    </div>
+</div>
+<script src="vjesala2.js"></script>
+</body>
+</html>
